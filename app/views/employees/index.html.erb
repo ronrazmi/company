@@ -1,0 +1,52 @@
+<div ng-app="app">
+
+<div ng-controller="employeesCtrl" ng-init="setup()">
+
+<div>
+<p> First Name </p>
+<input ng-model ="first_name">
+<p> Last Name </p>
+<input ng-model ="last_name">
+<p> Title </p>
+<input ng-model ="title">
+<p> University </p>
+<input ng-model ="university">
+
+
+<p><button ng-click="addEmployee(first_name, last_name, title, university)">Add Employee</button> </p>>
+
+<div ng-repeat="error in errors">
+<p> {{error}} </p>
+</div>
+</div>
+
+<p> Type in your search item here <input ng-model="new_first_name"> </p>
+
+<button ng-click="getOrderAttribute('first_name')"> Order by Name {{nameSorter}} </button>
+<button ng-click="getOrderAttribute('title')"> Order by Title {{titleSorter}} </button>
+
+
+
+<table>
+	<tr>
+	<th>full_name</th>
+	<th>title </th>
+	<th> phone </th>
+	<th> university </th>
+	</tr>
+	<tr ng-repeat="employee in employees | filter: {first_name: new_first_name} | orderBy: inputAttributeOrder: reverse" >
+
+  <td> {{employee.full_name}} </td>
+  <td> {{employee.title}} </td>
+  <td> {{employee.phone}} </td>
+  <td> {{employee.university}} </td>
+  </tr>
+
+  </table>
+
+
+</div>
+
+
+
+</div>
